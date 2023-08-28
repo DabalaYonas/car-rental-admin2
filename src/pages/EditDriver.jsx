@@ -5,14 +5,20 @@ import { useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
-async function addDriver(driverInfo) {
-    return axios.post("http://127.0.0.1:8000/booking/driver/api/", driverInfo, {headers: {'content-type': 'multipart/form-data'}}).then(response=>response.data);
+async function updateDriver(id, driverInfo) {
+    return axios.put("http://127.0.0.1:8000/booking/driver/api/" + id + "/", driverInfo, {headers: {'content-type': 'multipart/form-data'}}).then(response=>response.data);
 }
 
-function AddDriver() {
+function EditDriver() {
     const navigate = useNavigate();
-    const [inputs, setInputs] = useState({});
-    const [imageInput, setImageInput] = useState();
+    const state = useLocation().state;
+    let { selectedDriver } = state ? state : {};
+    selectedDriver = selectedDriver && selectedDriver[0];
+    const driverLicense = selectedDriver ? selectedDriver.driver_license : {
+        
+    };
+    const [inputs, setInputs] = useState((selectedDriver ? selectedDriver : {}));
+    const [imageInput, setImageInput] = useState(driverLicense);
   
     function handleChange(e) {
         var name = e.target.name;
@@ -22,6 +28,7 @@ function AddDriver() {
         } else {
             setInputs(values => ({...values, [name]: value}));
         }
+        console.log(selectedDriver);
     }
   
     function handleSubmit(e) {
@@ -41,7 +48,7 @@ function AddDriver() {
         console.log(item);
 
         })
-        addDriver(formData).then(response => {
+        updateDriver(selectedDriver.id, formData).then(response => {
             navigate("/drivers");
         });
     }
@@ -49,16 +56,79 @@ function AddDriver() {
     <div class="main-content">
       <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div class="container-fluid">
-          <h1 class="mb-0">Add Driver</h1>
+          <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" target="_blank">Driver profile</a>
         </div>
       </nav>
       
-      <div class="header pb-8 pt-5  d-flex align-items-center" style={{minHeight: "100px"}}>
+      <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style={{minHeight: "200px", backgroundImage: "url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg)", backgroundSize: "cover", backgroundPosition: "center top"}}>
+        <span class="mask bg-gradient-default opacity-8"></span>
       </div>
       
       <div class="container-fluid mt--7">
         <div class="row">
-          <div class="col-xl-1 order-xl-1">
+          <div class="col-xl-4 order-xl-2 mb-5 mb-xl-0">
+            <div class="card card-profile shadow">
+              <div class="row justify-content-center">
+                <div class="col-lg-3 order-lg-2">
+                  <div class="card-profile-image">
+                    <a href="#">
+                      <img src="https://alumni.engineering.utoronto.ca/files/2022/05/Avatar-Placeholder-400x400-1.jpg" class="rounded-circle" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="card-header text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
+                
+              </div>
+              <div class="card-body ">
+                <div className="row mt-md-5">
+                    <h3>Driver Details: </h3>
+                    <div className="personal-info input-group-prepend">
+                        <div className="personal-icons">
+                            <i className="bi bi-person mr-2"></i>
+                        </div>
+                        <div className="personal-views">
+                            <h3>Name <h4 className="text-muted">Dabala Yonas</h4></h3>
+                        </div>
+                    </div>
+                    <div className="personal-info input-group-prepend">
+                        <div className="personal-icons">
+                            <i class="bi bi-envelope mr-2"></i>
+                        </div>
+                        <div className="personal-views">
+                            <h3>Email: <h4 className="text-muted">dabo.yonasl@gmail.com</h4></h3>
+                        </div>
+                    </div>
+                    <div className="personal-info input-group-prepend">
+                        <div className="personal-icons">
+                            <i class="bi bi-phone mr-2"></i>
+                        </div>
+                        <div className="personal-views">
+                            <h3>Mobile: <h4 className="text-muted">+2519 102 7023</h4></h3>
+                        </div>
+                    </div>
+                    <div className="personal-info input-group-prepend">
+                        <div className="personal-icons">
+                            <i class="bi bi-calendar2-event mr-2"></i>
+                        </div>
+                        <div className="personal-views">
+                            <h3>Age: <h4 className="text-muted">20</h4></h3>
+                        </div>
+                    </div>
+                    <div className="personal-info input-group-prepend">
+                        <div className="personal-icons">
+                            <i className="bi bi-person mr-2 mr-2"></i>
+                        </div>
+                        <div className="personal-views">
+                            <h3>Gender: <h4 className="text-muted">Male</h4></h3>
+                        </div>
+                    </div>
+                        
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-8 order-xl-1">
             <div class="card bg-secondary shadow">
               <div class="card-header bg-white border-0">
                 <div class="row align-items-center">
@@ -154,4 +224,4 @@ function AddDriver() {
   </div>
 }
 
-export default AddDriver
+export default EditDriver

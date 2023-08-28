@@ -4,6 +4,7 @@ import ListView from "./component/ListView";
 import { useNavigate } from "react-router-dom";
 import { getCars } from "./datas/cars";
 import { getDrivers } from "./datas/drivers";
+import Tab from "./component/Tab/Tab";
 
 function BookingList() {
     const navigate = useNavigate();
@@ -46,6 +47,7 @@ function BookingList() {
 
     return <div>
         <h3 className="pd-v-2 pd-h-1">Booking</h3>
+            <Tab></Tab>
             <div className="myCard">
                 <h3 className="pd-v-2 pd-h-1">Booking List</h3>
                 <ListView listHeader={listHeader} listItems={listItems} handleClick={handleClick}></ListView>

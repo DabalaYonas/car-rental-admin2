@@ -14,6 +14,7 @@ import EditVehicle from './pages/EditVehicle';
 import AddDriver from './pages/AddDriver';
 import BookingList from './pages/BookingList';
 import PaymentList from './pages/Payment';
+import EditDriver from './pages/EditDriver';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
                   <Route path="/edit-vehicle" Component={EditVehicle} />
                   <Route path="/drivers" Component={DriversList} />
                   <Route path="/add-driver" Component={AddDriver} />
+                  <Route path="/edit-driver" Component={EditDriver} />
                   <Route path="/booking" Component={BookingList} />
                   <Route path="/payment" Component={PaymentList} />
                   <Route path="/invoice" Component={InvoiceDetail} />
