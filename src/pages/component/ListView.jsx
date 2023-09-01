@@ -16,9 +16,9 @@ function ListView(props) {
                     <table>
                         <thead>{props.listHeader.length > 0 &&
                             <tr className="table-header">
-                                <div className="checkbox-table">
+                                <th><div className="checkbox-table">
                                     <input type="checkbox" className="checkbox" onClick={handlerSelectAll}/>
-                                </div>
+                                </div></th>
                                 {props.listHeader.map((item, i) => (
                                     <th style={{textAlign: "center"}}  key={i}>{item}</th>
                                 ))}

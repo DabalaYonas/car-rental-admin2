@@ -17,17 +17,16 @@
     display: table;
     border-collapse: separate;
     table-layout: auto;
-
 }
 .tabs .tab {
-        position: relative;
-        display: table-cell;
-        transition: all ease .3s;
-        padding: 1em 1.6em;
-        transform: translate3d(0, 0, 0);
-        color: #636d84;
-        white-space: nowrap;
-        cursor: pointer;
+    position: relative;
+    display: table-cell;
+    transition: all ease .3s;
+    padding: 1em 1.6em;
+    transform: translate3d(0, 0, 0);
+    color: #636d84;
+    white-space: nowrap;
+    cursor: pointer;
 }
 
 .tabs a.tab:hover {
@@ -54,6 +53,6 @@
 }
 
 .tabs .tab.active::after {
-        opacity: 1;
-        transform: scale(1, 1);
-    }
+    opacity: 1;
+    transform: scale(1, 1);
+}

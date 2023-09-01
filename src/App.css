@@ -110,7 +110,7 @@ table {
   
   th, td {
     text-align: left;
-    padding: 18px;
+    padding: 30px;
   }
 
   tbody>tr {
@@ -124,7 +124,6 @@ table {
   }
 
   .checkbox-table {
-    padding: 18px;
     text-align: center;
   }
 
