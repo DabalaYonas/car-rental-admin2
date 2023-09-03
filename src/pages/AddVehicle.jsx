@@ -45,7 +45,7 @@ function AddVehicle() {
     }
   
     return <div>
-    <h3 className="pd-v-2 pd-h-1">Add Car</h3>
+    <h2 className="pd-v-2 pd-h-1">Add Car</h2>
         <div className="myCard">
             <h3 className="pd-v-2 pd-h-1">Add a New Car</h3>
             <VehicleForm handleSubmit={handleSubmit} handlerChange={handlerChange} inputs={inputs} button="Add car"></VehicleForm>

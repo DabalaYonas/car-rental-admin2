@@ -11,6 +11,8 @@ function VehiclesList() {
 
     useEffect(() => {
         let mounted = true;
+        setListItems([]);
+        setCarList([]);
         getCars().then(data => {
             if(mounted) {
                 setCarList(data);
@@ -28,7 +30,7 @@ function VehiclesList() {
     }
 
     return <div>
-        <h3 className="pd-v-2 pd-h-1">Cars</h3>
+        <h2 className="pd-v-2 pd-h-1">Cars</h2>
             <div className="myCard">
                 <h3 className="pd-v-2 pd-h-1">Car List</h3>
                 <ListView listHeader={listHeader} listItems={listItems} handleClick={handleClick}></ListView>

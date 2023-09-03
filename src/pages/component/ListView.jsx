@@ -11,7 +11,7 @@ function ListView(props) {
 
 
     return <div>
-            <div className="myCard-body pd-v-2 pd-h-1">
+            <div className="myCard-body">
                 <div style={{overflow: "auto"}}>
                     <table>
                         <thead>{props.listHeader.length > 0 &&
@@ -34,8 +34,11 @@ function ListView(props) {
                             </div></td>
                             
                             {item.map((e, i) => (
-                                <td style={{textAlign: "center"}} key={i}>{(typeof(e) === 'boolean') ? 
-                                    (e ? <i className="bi bi-check-circle-fill success-color"></i> : <i className="bi bi-x-circle-fill error-color"></i>) : e}</td>
+                                <td style={{textAlign: "center"}} key={i}>
+                                    {typeof(e) === 'boolean' ? (e ? <i className="bi bi-check-circle-fill text-success-color"></i> : <i className="bi bi-x-circle-fill text-error-color"></i>)  
+                                    : (props.badge === i ? (<Badge key={i}>{e}</Badge>) : e)}
+                                </td>
+                                // 
                             ))}
                             </tr>
                         ))}
@@ -44,6 +47,42 @@ function ListView(props) {
                 </div>
             </div>
     </div>
+}
+
+function Badge({children}) {
+    var bgColor;
+    const [PENDING, ACCEPTED, CANCELLED, COMPLETED, PAID, NOT_PAID] = ["PENDING", "ACCEPTED", "CANCELLED", "COMPLETED", "PAID", "NOT PAID"];
+    switch (children) {
+        case PENDING:
+            bgColor = "bg-success";
+            break;
+
+        case ACCEPTED:
+            bgColor = "bg-primary";
+            break;
+
+        case CANCELLED:
+            bgColor = "bg-error";
+            break;
+            
+        case COMPLETED:
+            bgColor = "bg-primary";
+            break;
+            
+        case PAID:
+            bgColor = "bg-primary";
+            break;
+            
+        case NOT_PAID:
+            bgColor = "bg-error";
+            break;
+    
+        default:
+            bgColor = "transparence";
+            break;
+    }
+
+    return <span style={{textAlign: "center"}} className={"badge " + bgColor}>{children}</span>
 }
 
 export default ListView;

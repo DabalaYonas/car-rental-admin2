@@ -5,15 +5,6 @@ let TabsContext = React.createContext();
 
 function Tabs(props) {
 
-    function updateTabs(e) {
-        var children = e.target.parentElement.children;
-        for (let i = 0; i < children.length; i++) {
-            children[i].classList.remove("active");
-        }
-        e.target.classList.add("active");
-    }
-
-   
     return <div>
         <div id="responsive" className="content">
             <div className="responsive">
@@ -21,11 +12,6 @@ function Tabs(props) {
                     <TabsContext.Provider value={[]}>
                         {props.children}
                     </TabsContext.Provider>
-                    {/* <a className="tab active" onClick={updateTabs}>All Booking</a>
-                    <a className="tab" onClick={updateTabs}>Pending</a>
-                    <a className="tab" onClick={updateTabs}>Accepted</a>
-                    <a className="tab" onClick={updateTabs}>Cancelled</a>
-                    <a className="tab" onClick={updateTabs}>Completed</a> */}
                 </div>
             </div>
         </div>

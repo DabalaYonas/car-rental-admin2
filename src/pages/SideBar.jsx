@@ -1,4 +1,4 @@
-import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar, SidebarProps } from "react-pro-sidebar";
 import { Link } from "react-router-dom";
 import GridViewIcon from '@mui/icons-material/GridView';
 import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
@@ -36,29 +36,29 @@ function SideBar(props) {
               };
             }
           },
-        subMenuContent: ({ level, active, disabled }) => {
-            if (level === 0) {
-              return {
-                backgroundColor: "#50b0f0",
-                color: "#232323 !important",
-                borderRadius: "8px !important",
-                fontWeight:"bold !important",
+        // subMenuContent: ({ level, active, disabled }) => {
+        //     if (level === 0) {
+        //       return {
+        //         backgroundColor: "#50b0f0",
+        //         color: "#232323 !important",
+        //         borderRadius: "8px !important",
+        //         fontWeight:"bold !important",
 
-                color: disabled ? "#eee" : "#455A64",
-                backgroundColor: active ? "#50b0f0" : undefined,
-                color: active ?  "white !important" : undefined,
-                borderRadius: active ? "8px !important" : "0px",
-                fontWeight: active ? "bold !important" : "normal",
+        //         color: disabled ? "#eee" : "#455A64",
+        //         backgroundColor: active ? "#50b0f0" : undefined,
+        //         color: active ?  "white !important" : undefined,
+        //         borderRadius: active ? "8px !important" : "0px",
+        //         fontWeight: active ? "bold !important" : "normal",
 
-                "&:hover": {
-                   backgroundColor: "#50b0f0 !important",
-                   color: "white !important",
-                   borderRadius: "8px !important",
-                   fontWeight: "bold !important"
-                 },
-              };
-            }
-          },
+        //         "&:hover": {
+        //            backgroundColor: "#50b0f0 !important",
+        //            color: "white !important",
+        //            borderRadius: "8px !important",
+        //            fontWeight: "bold !important"
+        //          },
+        //       };
+        //     }
+        //   },
 
         SubMenuExpandIcon: {
             color: '#b6b7b9',
@@ -66,8 +66,8 @@ function SideBar(props) {
           },
     }
 
-    return <div>
-        <Sidebar style={{ height: "100vh", background: "#fff"}}>
+    return <div style={{display: "flex", height: "100vh"}}>
+        <Sidebar>
             <Menu menuItemStyles={menuItemStyles}>
                 <MenuItem
                     icon={<MenuOutlinedIcon />}
@@ -79,6 +79,7 @@ function SideBar(props) {
                     {" "}
                     <h2>Admin</h2>
                 </MenuItem>
+                
                 <MenuItem active={window.location.pathname === "/"} icon={<GridViewIcon />} component={<Link to="/"></Link>}>Dashboard</MenuItem>
                 <SubMenu active={window.location.pathname === "/vehicles"} icon={<DirectionsCarIcon />} component={<Link to="/vehicles"></Link>} label="Vehicle">
                     <MenuItem active={window.location.pathname === "/vehicles"} component={<Link to="/vehicles"></Link>} >Vehicle List</MenuItem>
@@ -100,9 +101,6 @@ function SideBar(props) {
                 <MenuItem active={window.location.pathname === "/report"} component={<Link to="/report"></Link>} icon={<ReceiptIcon />}> Report </MenuItem>
             </Menu>
             </Sidebar>
-            <main>
-                {props.children}
-            </main>
             </div>
 }
 

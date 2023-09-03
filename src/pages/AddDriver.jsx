@@ -46,68 +46,68 @@ function AddDriver() {
         });
     }
     return <div>
-    <div class="main-content">
-      <nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
-        <div class="container-fluid">
-          <h1 class="mb-0">Add Driver</h1>
+    <div className="main-content">
+      <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+        <div className="container-fluid">
+          <h1 className="mb-0">Add Driver</h1>
         </div>
       </nav>
       
-      <div class="header pb-8 pt-5  d-flex align-items-center" style={{minHeight: "100px"}}>
+      <div className="header pb-8 pt-5  d-flex align-items-center" style={{minHeight: "100px"}}>
       </div>
       
-      <div class="container-fluid mt--7">
-        <div class="row">
-          <div class="col-xl-1 order-xl-1">
-            <div class="card bg-secondary shadow">
-              <div class="card-header bg-white border-0">
-                <div class="row align-items-center">
-                  <div class="col-8">
-                    <h3 class="mb-0">Driver</h3>
+      <div className="container-fluid mt--7">
+        <div className="row">
+          <div className="col-xl-1 order-xl-1">
+            <div className="card bg-secondary shadow">
+              <div className="card-header bg-white border-0">
+                <div className="row align-items-center">
+                  <div className="col-8">
+                    <h3 className="mb-0">Driver</h3>
                   </div>
                 </div>
               </div>
-              <div class="card-body">
+              <div className="card-body">
 
                 <form onSubmit={handleSubmit}>
-                  <h6 class="heading-small text-muted mb-4">Driver information</h6>
-                  <div class="pl-lg-4">
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group focused">
-                          <label class="form-control-label" for="input-first-name">First name</label>
-                          <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" name="first_name" onChange={handleChange} value={inputs.first_name} required/>
+                  <h6 className="heading-small text-muted mb-4">Driver information</h6>
+                  <div className="pl-lg-4">
+                    <div className="row">
+                      <div className="col-lg-6">
+                        <div className="form-group focused">
+                          <label className="form-control-label" htmlFor="input-first-name">First name</label>
+                          <input type="text" id="input-first-name" className="form-control form-control-alternative" placeholder="First name" name="first_name" onChange={handleChange} value={inputs.first_name} required/>
                         </div>
                       </div>
-                      <div class="col-lg-6">
-                        <div class="form-group focused">
-                          <label class="form-control-label" for="input-last-name">Last name</label>
-                          <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" name="last_name" onChange={handleChange} value={inputs.last_name} required/>
+                      <div className="col-lg-6">
+                        <div className="form-group focused">
+                          <label className="form-control-label" htmlFor="input-last-name">Last name</label>
+                          <input type="text" id="input-last-name" className="form-control form-control-alternative" placeholder="Last name" name="last_name" onChange={handleChange} value={inputs.last_name} required/>
                         </div>
                       </div>
                     </div>
 
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group focused">
-                          <label class="form-control-label" for="input-phone-number">Phone number</label>
-                          <input type="text" id="input-phone-number" class="form-control form-control-alternative" placeholder="Phone number" name="phone_number" onChange={handleChange} value={inputs.phone_number} required/>
+                    <div className="row">
+                      <div className="col-lg-6">
+                        <div className="form-group focused">
+                          <label className="form-control-label" htmlFor="input-phone-number">Phone number</label>
+                          <input type="text" id="input-phone-number" className="form-control form-control-alternative" placeholder="Phone number" name="phone_number" onChange={handleChange} value={inputs.phone_number} required/>
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                            <label class="form-control-label" for="input-email">Email address</label>
-                            <input type="email" id="input-email" class="form-control form-control-alternative" placeholder="dabo@example.com" name="email" onChange={handleChange} value={inputs.email} required/>
+                        <div className="col-lg-6">
+                            <div className="form-group">
+                            <label className="form-control-label" htmlFor="input-email">Email address</label>
+                            <input type="email" id="input-email" className="form-control form-control-alternative" placeholder="dabo@example.com" name="email" onChange={handleChange} value={inputs.email} required/>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="row">
-                      <div class="col-lg-6">
-                        <div class="form-group focused">
-                          <label class="form-control-label" for="input-gender">Gender</label>
-                          <select class="form-control form-control-alternative" id="input-gender" name="gender" onChange={handleChange} value={inputs.gender} required>
+                    <div className="row">
+                      <div className="col-lg-6">
+                        <div className="form-group focused">
+                          <label className="form-control-label" htmlFor="input-gender">Gender</label>
+                          <select className="form-control form-control-alternative" id="input-gender" name="gender" onChange={handleChange} value={inputs.gender} required>
                             <option value="">Select a gender</option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
@@ -115,34 +115,34 @@ function AddDriver() {
                             </div>
                         </div>
 
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                            <label class="form-control-label" for="input-age">Age</label>
-                            <input type="number" id="input-age" class="form-control form-control-alternative" placeholder="Age" name="age" onChange={handleChange} value={inputs.age} required/>
+                        <div className="col-lg-6">
+                            <div className="form-group">
+                            <label className="form-control-label" htmlFor="input-age">Age</label>
+                            <input type="number" id="input-age" className="form-control form-control-alternative" placeholder="Age" name="age" onChange={handleChange} value={inputs.age} required/>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group" >
-                                <label class="form-control-label" for="input-driving-license">Driving License</label>
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <div className="form-group" >
+                                <label className="form-control-label" htmlFor="input-driving-license">Driving License</label>
                                 
                                 <UploadView setImageInput={setImageInput}></UploadView>
                             </div>
                         </div>
                     </div> 
                     
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group" >
+                    <div className="row">
+                        <div className="col-lg-6">
+                            <div className="form-group" >
                                 <Button value="Submit" onClick={() => {}}></Button>
                             </div>
                         </div>
                     </div>
                     
                   </div>
-                  {/* <hr class="my-4" /> */}
+                  {/* <hr className="my-4" /> */}
                 </form>
               </div>
             </div>

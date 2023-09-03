@@ -13,6 +13,8 @@ function DriversList() {
 
     useEffect(() => {
         let mounted = true;
+        setListItems([]);
+        setDriversList([]);
         getDrivers().then(data => {
             if(mounted) {
                 setDriversList(data);
@@ -31,7 +33,7 @@ function DriversList() {
     }
 
     return <div>
-        <h3 className="pd-v-2 pd-h-1">Drivers</h3>
+        <h2 className="pd-v-2 pd-h-1">Drivers</h2>
             <div className="myCard">
                 <h3 className="pd-v-2 pd-h-1">Drivers List</h3>
                 <ListView listHeader={listHeader} listItems={listItems} handleClick={handleClick}></ListView>
