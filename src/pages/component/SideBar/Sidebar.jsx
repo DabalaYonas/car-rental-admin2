@@ -181,8 +181,32 @@ function SideBar(props) {
                             <li><Link to="/add-driver" className="submenu sidebar-link">Driver Add</Link></li>
                         </ul>
                     </li>
-                    <li><Link className="menu-link sidebar-link" to="/customers"><i className="bi bi-person-fill-check"></i><span className="sidebar-body-title">Customer</span></Link></li>
-                    <li><Link className="menu-link sidebar-link" to="/booking"><i className="bi bi-calendar-check-fill"></i><span className="sidebar-body-title">Booking</span></Link></li>
+                    <li>
+                        <div className="menu" onClick={handlerDropdown}>
+                            <Link className="menu-link sidebar-link" to="/customers">
+                                <i className="bi bi-person-fill-check"></i>
+                                <span className="sidebar-body-title">Customer</span>
+                                <i className="bi bi-chevron-right sidebar_dropdown_icon"></i>
+                            </Link>
+                        </div>
+                        <ul className="submenus">
+                            <li><Link to="/customers" className="submenu sidebar-link">Customer List</Link></li>
+                            <li><Link to="/add-customer" className="submenu sidebar-link">Customer Add</Link></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div className="menu" onClick={handlerDropdown}>
+                            <Link className="menu-link sidebar-link" to="/booking">
+                                <i className="bi bi-calendar-check-fill"></i>
+                                <span className="sidebar-body-title">Booking</span>
+                                <i className="bi bi-chevron-right sidebar_dropdown_icon"></i>
+                            </Link>
+                        </div>
+                        <ul className="submenus">
+                            <li><Link to="/booking" className="submenu sidebar-link">Booking List</Link></li>
+                            <li><Link to="/add-booking" className="submenu sidebar-link">Booking Add</Link></li>
+                        </ul>
+                    </li>
                     <li><Link className="menu-link sidebar-link" to="/payment"><i className="bi bi-cash-stack"></i><span className="sidebar-body-title">Payment List</span></Link></li>
                     <li><Link className="menu-link sidebar-link" to="/setting"><i className="bi bi-gear-fill"></i><span className="sidebar-body-title">Setting</span></Link></li>
                     <li className="menu-title">Report</li>

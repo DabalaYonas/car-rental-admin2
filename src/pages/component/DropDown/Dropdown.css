@@ -1,0 +1,42 @@
+#select{
+    position: relative;
+    width: 100%;
+}
+#select span{
+    padding: 3px;
+    background-color: red;
+    cursor: pointer;
+}
+
+#select input:focus + #list{
+    display: block;
+}
+  
+#list{
+    display: none;
+    position: absolute;
+    width: 100%;
+}
+
+#list:hover{
+    display: block;
+}
+
+#list:c{
+    display: none;
+}
+
+#list a{
+    display: block;
+    background: white;
+    color: #232323;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-top: 1px solid #ccc;
+    cursor: pointer;
+}
+
+#list a:hover{
+    background: #04a0fe;
+    color: #fff;
+}

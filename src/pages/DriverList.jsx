@@ -8,7 +8,7 @@ function DriversList() {
     const navigate = useNavigate();
     var [driversList, setDriversList] = useState([]);
     
-    const listHeader = ["ID", "Name", "Email", "Phone number", "Age"];
+    const listHeader = ["ID", "Name", "Email", "Phone number", "Age", "Is Customer"];
     const [listItems, setListItems] = useState([]);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function DriversList() {
             if(mounted) {
                 setDriversList(data);
                 data.forEach(e => {
-                    setListItems(prev => ([...prev, [e.id, e.first_name + " " + e.last_name, e.email, e.phone_number, e.age]]));
+                    setListItems(prev => ([...prev, [e.id, e.first_name + " " + e.last_name, e.email, e.phone_number, e.age, e.is_customer]]));
                 });
             }
         });

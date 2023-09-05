@@ -5,30 +5,21 @@ import { useState } from "react";
 import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
 
-async function updateDriver(id, driverInfo) {
-    return axios.put("http://127.0.0.1:8000/booking/driver/api/" + id + "/", driverInfo, {headers: {'content-type': 'multipart/form-data'}}).then(response=>response.data);
+async function updateCustomer(id, customerForm) {
+    return axios.put("http://127.0.0.1:8000/booking/customer/api/" + id + "/", customerForm).then(response=>response.data);
 }
 
-function EditDriver() {
+function EditCustomer() {
     const navigate = useNavigate();
     const state = useLocation().state;
-    let { selectedDriver } = state ? state : {};
-    selectedDriver = selectedDriver && selectedDriver[0];
-    const driverLicense = selectedDriver ? selectedDriver.driver_license : {
-        
-    };
-    const [inputs, setInputs] = useState((selectedDriver ? selectedDriver : {}));
-    const [imageInput, setImageInput] = useState(driverLicense);
+    let { selectedCustomer } = state ? state : {};
+    selectedCustomer = selectedCustomer && selectedCustomer[0];
+    const [inputs, setInputs] = useState((selectedCustomer ? selectedCustomer : {}));
   
     function handleChange(e) {
         var name = e.target.name;
         var value = e.target.value;
-        if(name === "image") {
-            setImageInput(e.target.files[0]);
-        } else {
-            setInputs(values => ({...values, [name]: value}));
-        }
-        console.log(selectedDriver);
+        setInputs(values => ({...values, [name]: value}));
     }
   
     function handleSubmit(e) {
@@ -39,24 +30,17 @@ function EditDriver() {
         formData.append("last_name", inputs.last_name);
         formData.append("email", inputs.email);
         formData.append("phone_number", inputs.phone_number);
-        formData.append("gender", inputs.gender);
         formData.append("age", inputs.age);
-        if(typeof(imageInput) !== "string") {
-            formData.append("driver_license", imageInput, imageInput.name);
-        }
-        formData.forEach(item => {
-        console.log(item);
 
-        })
-        updateDriver(selectedDriver.id, formData).then(response => {
-            navigate("/drivers");
+        updateCustomer(selectedCustomer.id, formData).then(response => {
+            navigate("/customer");
         });
     }
     return <div>
     <div className="main-content">
       <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div className="container-fluid">
-          <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" target="_blank">Driver profile</a>
+          <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" target="_blank">Customer profile</a>
         </div>
       </nav>
       
@@ -82,13 +66,13 @@ function EditDriver() {
               </div>
               <div className="card-body ">
                 <div className="row mt-md-5">
-                    <h3>Driver Details: </h3>
+                    <h3>Customer Details: </h3>
                     <div className="personal-info input-group-prepend">
                         <div className="personal-icons">
                             <i className="bi bi-person mr-2"></i>
                         </div>
                         <div className="personal-views">
-                            <h3>Name <h4 className="text-muted">{selectedDriver.first_name + " " + selectedDriver.last_name}</h4></h3>
+                            <h3>Name <h4 className="text-muted">{selectedCustomer.first_name + " " + selectedCustomer.last_name}</h4></h3>
                         </div>
                     </div>
                     <div className="personal-info input-group-prepend">
@@ -96,7 +80,7 @@ function EditDriver() {
                             <i className="bi bi-envelope mr-2"></i>
                         </div>
                         <div className="personal-views">
-                            <h3>Email: <h4 className="text-muted">{selectedDriver.email}</h4></h3>
+                            <h3>Email: <h4 className="text-muted">{selectedCustomer.email}</h4></h3>
                         </div>
                     </div>
                     <div className="personal-info input-group-prepend">
@@ -104,7 +88,7 @@ function EditDriver() {
                             <i className="bi bi-phone mr-2"></i>
                         </div>
                         <div className="personal-views">
-                            <h3>Mobile: <h4 className="text-muted">{selectedDriver.phone_number}</h4></h3>
+                            <h3>Mobile: <h4 className="text-muted">{selectedCustomer.phone_number}</h4></h3>
                         </div>
                     </div>
                     <div className="personal-info input-group-prepend">
@@ -112,18 +96,9 @@ function EditDriver() {
                             <i className="bi bi-calendar2-event mr-2"></i>
                         </div>
                         <div className="personal-views">
-                            <h3>Age: <h4 className="text-muted">{selectedDriver.age}</h4></h3>
+                            <h3>Age: <h4 className="text-muted">{selectedCustomer.age}</h4></h3>
                         </div>
                     </div>
-                    <div className="personal-info input-group-prepend">
-                        <div className="personal-icons">
-                            <i className="bi bi-person mr-2 mr-2"></i>
-                        </div>
-                        <div className="personal-views">
-                            <h3>Gender: <h4 className="text-muted">{selectedDriver.gender}</h4></h3>
-                        </div>
-                    </div>
-                        
                 </div>
               </div>
             </div>
@@ -133,14 +108,14 @@ function EditDriver() {
               <div className="card-header bg-white border-0">
                 <div className="row align-items-center">
                   <div className="col-8">
-                    <h3 className="mb-0">Driver</h3>
+                    <h3 className="mb-0">Customer</h3>
                   </div>
                 </div>
               </div>
               <div className="card-body">
 
                 <form onSubmit={handleSubmit}>
-                  <h6 className="heading-small text-muted mb-4">Driver information</h6>
+                  <h6 className="heading-small text-muted mb-4">Customer information</h6>
                   <div className="pl-lg-4">
                     <div className="row">
                       <div className="col-lg-6">
@@ -174,17 +149,6 @@ function EditDriver() {
                     </div>
                     
                     <div className="row">
-                      <div className="col-lg-6">
-                        <div className="form-group focused">
-                          <label className="form-control-label" htmlFor="input-gender">Gender</label>
-                          <select className="form-control form-control-alternative" id="input-gender" name="gender" onChange={handleChange} value={inputs.gender} required>
-                            <option value="">Select a gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                          </select>
-                            </div>
-                        </div>
-
                         <div className="col-lg-6">
                             <div className="form-group">
                             <label className="form-control-label" htmlFor="input-age">Age</label>
@@ -193,16 +157,6 @@ function EditDriver() {
                         </div>
                     </div>
 
-                    <div className="row">
-                        <div className="col-lg-6">
-                            <div className="form-group" >
-                                <label className="form-control-label" htmlFor="input-driving-license">Driving License</label>
-                                
-                                <UploadView setImageInput={setImageInput}></UploadView>
-                            </div>
-                        </div>
-                    </div> 
-                    
                     <div className="row">
                         <div className="col-lg-6">
                             <div className="form-group" >
@@ -224,4 +178,4 @@ function EditDriver() {
   </div>
 }
 
-export default EditDriver
+export default EditCustomer
