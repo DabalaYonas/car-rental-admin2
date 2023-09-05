@@ -16,9 +16,9 @@ function ListView(props) {
                     <table>
                         <thead>{props.listHeader.length > 0 &&
                             <tr className="table-header">
-                                <th><div className="checkbox-table">
+                                {!props.isReport && <th><div className="checkbox-table">
                                     <input type="checkbox" className="checkbox" onClick={handlerSelectAll}/>
-                                </div></th>
+                                </div></th>}
                                 {props.listHeader.map((item, i) => (
                                     <th style={{textAlign: "center"}}  key={i}>{item}</th>
                                 ))}
@@ -29,9 +29,9 @@ function ListView(props) {
                         <tbody>
                         {props.listItems.length > 0 && props.listItems.map((item, index) => (
                             <tr key={index} index={index} onClick={() => props.handleClick(item[0])}>
-                            <td><div className="checkbox-table">
+                            {!props.isReport &&<td><div className="checkbox-table">
                                 <input type="checkbox" className="checkbox"/>
-                            </div></td>
+                            </div></td>}
                             
                             {item.map((e, i) => (
                                 <td style={{textAlign: "center"}} key={i}>

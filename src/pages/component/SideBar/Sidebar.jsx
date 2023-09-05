@@ -210,7 +210,7 @@ function SideBar(props) {
                     <li><Link className="menu-link sidebar-link" to="/payment"><i className="bi bi-cash-stack"></i><span className="sidebar-body-title">Payment List</span></Link></li>
                     <li><Link className="menu-link sidebar-link" to="/setting"><i className="bi bi-gear-fill"></i><span className="sidebar-body-title">Setting</span></Link></li>
                     <li className="menu-title">Report</li>
-                    <li><Link className="menu-link sidebar-link" to="/invoice"><i className="bi bi-receipt-cutoff"></i><span className="sidebar-body-title">Report</span></Link></li>
+                    <li><Link className="menu-link sidebar-link" to="/reports"><i className="bi bi-receipt-cutoff"></i><span className="sidebar-body-title">Report</span></Link></li>
                 </ul>
             </div>
         </div>

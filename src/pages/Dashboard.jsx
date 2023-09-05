@@ -21,6 +21,7 @@ function Dashboard() {
     const [reserveCar, setReserveCar] = useState(0);
     const [revenue, setRevenue] = useState(0);
     const [pendingPayment, setPendingPayment] = useState(0);
+    const [pendingBooking, setPendingBooking] = useState(0);
 
     useEffect(() => {
         let mounted = true;
@@ -37,6 +38,7 @@ function Dashboard() {
         getBooks().then(data => {
         if(mounted) {
             setBookList(data);
+            setPendingBooking(data.filter(item => item.status == "PENDING").length);
             setOnRentCar(data.filter(item => item.status == "ACCEPTED").length);
         }
         });
@@ -83,21 +85,24 @@ function Dashboard() {
     return <div>
         <h1 className="header-big">Dashboard</h1>
         <div className="row">
-            <div className="col-4 pd-h-1 pd-v-1">
+            <div className="col-3 pd-h-1 pd-v-1">
                 <Card title="Total car" text={totalCar} iconClass="bi bi-car-front-fill" cardBg="1"/>
             </div>
-            <div className="col-4 pd-h-1 pd-v-1">
+            <div className="col-3 pd-h-1 pd-v-1">
                 <Card title="Available car" text={availableCar} iconClass="bi bi-currency-exchange" cardBg="2"/>
             </div>
-            <div className="col-4 pd-h-1 pd-v-1">
-                <Card title="Pending Payment" text={pendingPayment} iconClass="bi bi-currency-exchange" cardBg="2"/>
+            <div className="col-3 pd-h-1 pd-v-1">
+                <Card title="Pending Booking" text={pendingBooking} iconClass="bi bi-currency-exchange" cardBg="3"/>
             </div>
-            <div className="col-4 pd-h-1 pd-v-1">
-                <Card title="Revenue" text={revenue + " ETB"} iconClass="bi bi-currency-exchange" cardBg="2"/>
+            <div className="col-3 pd-h-1 pd-v-1">
+                <Card title="Pending Payment" text={pendingPayment} iconClass="bi bi-currency-exchange" cardBg="4"/>
+            </div>
+            <div className="col-3 pd-h-1 pd-v-1">
+                <Card title="Revenue" text={revenue + " ETB"} iconClass="bi bi-currency-exchange" cardBg="5"/>
             </div>
         </div>
         <div className="row">
-            <div className="col-2 pd-h-1 pd-v-1">
+            <div className="col-4 pd-h-1 pd-v-1">
                 <div className="myCard">
                     <div className="myCard-header">
                         <h3>Car static</h3>
@@ -105,14 +110,14 @@ function Dashboard() {
                     <Chart options={carOptions} series={carSeries} width="400" type="donut" />
                 </div>
             </div>
-            {/* <div className="pd-h-1 pd-v-1">
+            <div className="col-n-w pd-h-1 pd-v-1">
                 <div className="myCard">
                     <div className="myCard-header">
                         <h3>Income static</h3>
                     </div>
                     <Chart options={options2} series={series2} width="500" type="line" />
                 </div>
-            </div> */}
+            </div>
         </div>
     </div>
 }

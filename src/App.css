@@ -35,17 +35,27 @@ body {
 
 .col-2 {
   flex: 0 0 auto;
-  width: 50%;
+  width: 20%;
 }
 
 .col-3 {
   flex: 0 0 auto;
-  width: 33.33333333%;
+  width: 25%;
 }
 
 .col-4 {
   flex: 0 0 auto;
-  width: 25%;
+  width: 33.33333333%;
+}
+
+.col-6 {
+  flex: 0 0 auto;
+  width: 50%;
+}
+
+.col-n-w {
+  flex: 0 0 auto;
+  width: unset!important;
 }
 
 .col-12 {
@@ -97,9 +107,13 @@ h3 {
     margin-top: 5px;
 }
 
+.mg-t-2 {
+    margin-top: 20px;
+}
+
 .pd-v-1 {
-    padding-top: 10px;
-    padding-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .pd-v-2 {
@@ -175,6 +189,18 @@ table {
 
   .card-bg-2 {
     background-color: rgba(12, 88, 252, 0.5);
+  }
+
+  .card-bg-3 {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .card-bg-4 {
+    background-color: rgba(184, 95, 19, 0.5);
+  }
+
+  .card-bg-5 {
+    background-color: rgba(184, 19, 173, 0.5);
   }
 
   .myCard-footer {

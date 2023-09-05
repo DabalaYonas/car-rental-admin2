@@ -21,7 +21,6 @@ function BookingList() {
         setListItems([]);
         getBooks().then(data => {
             if(mounted) {
-                // setBookingList(data);
                 data.forEach(e => {
                     var bookedCarName = 0;
                     var driverName = e.booked_driver;

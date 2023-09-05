@@ -34,8 +34,8 @@ function PaymentList() {
     }, []);
 
     function handleClick(id) {
-        // const selectedCar = carList.filter(car => car.id == id);
-        // navigate("/edit-vehicle", {state: {"selectedCar": selectedCar}});
+        const selectedPayment = paymentList.filter(payment => payment.id === id);
+        navigate("/edit-payment", {state: {"selectedPayment": selectedPayment}});
     }
 
     function handleTabClick(n) {
@@ -73,8 +73,8 @@ function PaymentList() {
         <Tabs>
             <Tabs.Tab isActive={true} onClick={() => handleTabClick(ALL)}>All Payment</Tabs.Tab>
             <Tabs.Tab onClick={() => handleTabClick(PENDING)}>Pending</Tabs.Tab>
-            <Tabs.Tab onClick={() => handleTabClick(PAID)}>PAID</Tabs.Tab>
-            <Tabs.Tab onClick={() => handleTabClick(NOT_PAID)}>NOT PAID</Tabs.Tab>
+            <Tabs.Tab onClick={() => handleTabClick(PAID)}>Paid</Tabs.Tab>
+            <Tabs.Tab onClick={() => handleTabClick(NOT_PAID)}>Not Paid</Tabs.Tab>
         </Tabs>
         <div className="myCard">
             <h3 className="pd-v-2 pd-h-1">Payment List</h3>

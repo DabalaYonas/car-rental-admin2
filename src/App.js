@@ -6,7 +6,7 @@ import Dashboard from './pages/Dashboard';
 
 import { Route, BrowserRouter, Routes, Link } from "react-router-dom";
 import VehiclesList from './pages/VehiclesList';
-import InvoiceList from './pages/InvoiceList';
+import ReportList from './pages/ReportList';
 import InvoiceDetail from './pages/InvoiceDetail';
 import DriversList from './pages/DriverList';
 import AddVehicle from './pages/AddVehicle';
@@ -19,6 +19,7 @@ import CustomerList from './pages/CustomerList';
 import AddCustomer from './pages/AddCustomer';
 import EditCustomer from './pages/EditCustomer';
 import AddBooking from './pages/AddBooking';
+import EditPayment from './pages/EditPayment';
 
 
 function App() {
@@ -39,7 +40,8 @@ function App() {
                   <Route path="/add-customer" Component={AddCustomer} />
                   <Route path="/edit-customer" Component={EditCustomer} />
                   <Route path="/payment" Component={PaymentList} />
-                  <Route path="/invoice" Component={InvoiceDetail} />
+                  <Route path="/edit-payment" Component={EditPayment} />
+                  <Route path="/reports" Component={ReportList} />
                 </Routes>
             </SideBar>
         </BrowserRouter>
