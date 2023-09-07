@@ -268,6 +268,7 @@ table {
 .btn-secondary {
   min-width: 200px;
   background-color: #FF3131;
+  color: #fff;
 }
 
 /* .btn i {
@@ -304,3 +305,150 @@ table {
   color: #198754!important;
 }
 
+.list-card {
+  background-color: #fdfdfd;
+  border-radius: 14px;
+  box-shadow: 0px 8px 24px 0px rgba(69, 69, 80, 0.1);
+  min-width: 320px;
+  max-width: 360px;
+}
+
+.list-card .row {
+  margin: 0px;
+}
+
+.list-card .row>* {
+  width: unset;
+  padding: 0px;
+}
+
+.list-card .list-card-header img {
+  width: 75px;
+}
+
+.list-card .list-card-header, .list-card .list-card-body ul li, .list-card .list-card-footer {
+  padding: 16px 14px;
+}
+
+.list-card .list-card-header {
+  color: #223548;
+  border-bottom: 1px solid #a3a3a353;
+}
+
+.list-card .action-icons i {
+  font-size: 1.2em;
+  padding: 0px 3px;
+  cursor: pointer;
+}
+
+.list-card-header .dropdown {
+  background-color: #eee;
+  padding: 10px 20px 0px 10px;
+  position: absolute;
+  z-index: 2;
+  transition: 0.2s;
+  display: none;
+}
+
+.list-card-header .dropdown ul li {
+  padding-bottom: 10px;
+}
+
+.list-card .list-card-body ul {
+  padding: 0px;
+  margin: 0px;
+}
+
+.list-card-body .action-icons i {
+  color: #2188ff;
+}
+
+.list-card-body .action-icons i.bi-trash {
+  color: red;
+}
+
+.list-card-body .action-icons i:hover {
+  color: #0052af;
+}
+
+.list-card-body .action-icons i.bi-trash:hover {
+  color: rgb(193, 4, 4);
+}
+
+.list-card-header h1 {
+  font-size: 1.5em;
+  margin: 0px;
+}
+
+.list-card-body {
+  padding-left: 14px;
+}
+
+.list-card-body ul li {
+  padding-left: 0px!important;
+}
+
+.list-card-body ul li h3 {
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.list-card-body ul li:not(:last-child) {
+  border-bottom: 1px solid #a3a3a353;
+}
+
+
+.list-card-footer {
+  border-top: 1px solid #a3a3a353;
+}
+
+.modal {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.34);
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  display: block;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fdfdfd;
+  border-radius: 10px;
+  width: 400px;
+  padding: 34px 20px 20px 20px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 20%;
+}
+
+.modal-content h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+}
+
+.modal-content p {
+  color: #828282;
+  margin-bottom: 30px;
+}
+
+.modal-content div div {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.modal-content a {
+  display: block;
+}
+
+.modal-content div div a.btn-primary:hover {
+  background-color: #0554ad;
+  border-color: #0554ad;
+}
+
+.modal-content div div a.btn-secondary:hover {
+  background-color: #dadcde;
+  border-color: #dadcde;
+}

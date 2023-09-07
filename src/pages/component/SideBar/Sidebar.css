@@ -26,7 +26,6 @@ body {
     left: 0;
     background-color: #fff; 
     overflow-x: hidden; 
-    padding-top: 60px; 
     transition: 0.3s;
 }
 
@@ -70,6 +69,10 @@ font-weight: 600;
     color: #0992e2;
 }
 
+.sidebar-body {
+    padding: 70px 20px 20px 28px;
+}
+
 .sidebar-body .menu {
     margin-bottom: 3px;
     cursor: pointer;
@@ -109,10 +112,6 @@ font-weight: 600;
     background-color: #0992e2;
     border-radius: 6px;
     color: #fff;
-}
-
-.sidebar-body {
-padding: 10px 20px 20px 28px;
 }
 
 .sidebar-body i {

@@ -558,15 +558,15 @@
   
   .btn-primary {
     color: #fff;
-    border-color: #5e72e4;
-    background-color: #5e72e4;
+    border-color: #0070f2;
+    background-color: #0070f2;
     box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
   }
   
   .btn-primary:hover {
     color: #fff;
-    border-color: #5e72e4;
-    background-color: #5e72e4;
+    border-color: #0070f2;
+    background-color: #0070f2;
   }
   
   .btn-primary:focus {
@@ -581,8 +581,8 @@
   
   .btn-primary:not(:disabled):not(.disabled):active {
     color: #fff;
-    border-color: #5e72e4;
-    background-color: #324cdd;
+    border-color: #0261cd;
+    background-color: #0261cd;
   }
   
   .btn-primary:not(:disabled):not(.disabled):active:focus {

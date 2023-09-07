@@ -51,7 +51,7 @@ function ListView(props) {
 
 function Badge({children}) {
     var bgColor;
-    const [PENDING, ACCEPTED, CANCELLED, COMPLETED, PAID, NOT_PAID] = ["PENDING", "ACCEPTED", "CANCELLED", "COMPLETED", "PAID", "NOT PAID"];
+    const [PENDING, ACCEPTED, CANCELLED, COMPLETED, RETURNED, PAID, NOT_PAID] = ["PENDING", "ACCEPTED", "CANCELLED", "COMPLETED", "RETURNED", "PAID", "NOT PAID"];
     switch (children) {
         case PENDING:
             bgColor = "bg-success";
@@ -66,6 +66,10 @@ function Badge({children}) {
             break;
             
         case COMPLETED:
+            bgColor = "bg-primary";
+            break;
+            
+        case RETURNED:
             bgColor = "bg-primary";
             break;
             

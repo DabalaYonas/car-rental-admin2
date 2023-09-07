@@ -9,6 +9,7 @@ import { getPayments } from "./datas/payments";
 
 function Dashboard() {
     var [carSeries, setCarSeries] = useState([0, 0, 0, 0]);
+    var [seriesPayment, setSeriesPayment] = useState([{data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}]);
     var [carOptions, setCarOptions] = useState({"series": carSeries, "labels": ['On Rented', 'Avaliable', 'Reserve', 'Accident']});
 
     var [bookList, setBookList] = useState([]);
@@ -21,7 +22,31 @@ function Dashboard() {
     const [reserveCar, setReserveCar] = useState(0);
     const [revenue, setRevenue] = useState(0);
     const [pendingPayment, setPendingPayment] = useState(0);
+    const [paidPayments, setPaidPayments] = useState([]);
     const [pendingBooking, setPendingBooking] = useState(0);
+
+    var optionPayment = {
+        chart: {id: "income-bar"},
+        dataLabels: {
+          enabled: false
+        },
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Agu",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+          ]
+        }
+      };
 
     useEffect(() => {
         let mounted = true;
@@ -62,25 +87,10 @@ function Dashboard() {
         });
 
         setCarSeries([onRentCar, availableCar, reserveCar, 0]);
+        setSeriesPayment([{data: paidPayments}]);
         return () => mounted = false;
     }, [availableCar]);
 
-
-    var options2 = {
-        chart: {id: "basic-bar"},
-        xaxis: {categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]},
-        stroke: {
-            curve: 'smooth',
-        }
-    };
-
-    var series2 = [{
-        name: "series-1",
-        data: [30, 40, 45, 50, 49, 60, 70, 91],
-    },{
-        name: "series-1",
-        data: [30, 20, 45, 50, 79, 60, 70, 91],
-    }]
     
     return <div>
         <h1 className="header-big">Dashboard</h1>
@@ -113,9 +123,9 @@ function Dashboard() {
             <div className="col-n-w pd-h-1 pd-v-1">
                 <div className="myCard">
                     <div className="myCard-header">
-                        <h3>Income static</h3>
+                        <h3>This year incomes</h3>
                     </div>
-                    <Chart options={options2} series={series2} width="500" type="line" />
+                    <Chart options={optionPayment} series={seriesPayment} width="500" type="line" />
                 </div>
             </div>
         </div>

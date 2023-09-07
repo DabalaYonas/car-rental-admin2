@@ -20,6 +20,7 @@ import AddCustomer from './pages/AddCustomer';
 import EditCustomer from './pages/EditCustomer';
 import AddBooking from './pages/AddBooking';
 import EditPayment from './pages/EditPayment';
+import SettingPage from './pages/Setting';
 
 
 function App() {
@@ -41,7 +42,9 @@ function App() {
                   <Route path="/edit-customer" Component={EditCustomer} />
                   <Route path="/payment" Component={PaymentList} />
                   <Route path="/edit-payment" Component={EditPayment} />
+                  <Route path="/setting" Component={SettingPage} />
                   <Route path="/reports" Component={ReportList} />
+                  <Route path="/invoice" Component={InvoiceDetail} />
                 </Routes>
             </SideBar>
         </BrowserRouter>

@@ -26,7 +26,7 @@ function ReportList() {
         });
         getBooks().then(data => {
             if(mounted) {
-                data.filter(item => item.status === "COMPLETED").forEach(e => {
+                data.filter(item => item.status === "RETURNED").forEach(e => {
                     var bookedCarName = 0;
                     var driverName = e.booked_driver;
                     getCars().then(r1 => {
