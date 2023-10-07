@@ -333,7 +333,7 @@
   }
   
   .col-4 {
-    max-width: 33.33333%;
+    /* max-width: 33.33333%; */
     flex: 0 0 33.33333%;
   }
   
@@ -416,7 +416,7 @@
     height: calc(2.75rem + 2px);
     padding: .625rem .75rem;
     transition: all .2s cubic-bezier(.68, -.55, .265, 1.55);
-    color: #8898aa;
+    color: #232323;
     border: 1px solid #cad1d7;
     border-radius: .375rem;
     background-color: #fff;
@@ -436,7 +436,7 @@
   }
   
   .form-control:focus {
-    color: #8898aa;
+    color: #232323;
     border-color: rgba(50, 151, 211, .25);
     outline: 0;
     background-color: #fff;

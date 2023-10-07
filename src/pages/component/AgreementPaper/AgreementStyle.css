@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+/* body {
+}
+         */
+#agreement {
+    font-family: 'Roboto', sans-serif;
+    background: white;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    /* color: #232323; */
+}
+#agreement.A4 {  
+    width: 21cm;
+    height: 29.7cm; 
+    padding: 16px 70px 60px 70px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+#agreement p {
+    line-height: 2em;
+    font-size: 0.95em;
+    font-weight: 500;
+    font-weight: 500;
+}
+
+.blank-space-m {
+    display: inline-block;
+    min-width: 200px;
+    border-bottom: 2px solid #232323;
+    line-height: 1.5em;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: -8px;
+    text-align: center;
+}
+
+.blank-space-sm {
+    display: inline-block;
+    min-width: 100px;
+    border-bottom: 2px solid #232323;
+    line-height: 1.5em;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: -8px;
+    text-align: center;
+}
+
+.mr-b-2 {
+    margin-bottom: 20px;
+}
+
+.pd-v-1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.pd-v-2 {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.pd-v-3 {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#signImg {
+    float: right;
+    clear: both;
+}
+
+@media print {
+    div {
+    font-family: 'Roboto', sans-serif;
+    background: white;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
+    /* color: #232323; */
+    }
+    #agreement.A4 {  
+        width: 21cm;
+        height: 29.7cm; 
+        padding: 16px 70px 60px 70px;
+    }
+    h1 {
+        text-align: center;
+    }
+
+    p {
+        line-height: 2em;
+        font-size: 0.95em;
+        font-weight: 500;
+        font-weight: 500;
+    }
+
+    .blank-space-m {
+        display: inline-block;
+        min-width: 200px;
+        border-bottom: 2px solid #232323;
+        line-height: 1.5em;
+        margin: 0px 2px;
+    }
+
+    .blank-space-sm {
+        display: inline-block;
+        min-width: 100px;
+        border-bottom: 2px solid #232323;
+        line-height: 1.5em;
+        margin: 0px 2px;
+    }
+
+    .mr-b-2 {
+        margin-bottom: 20px;
+    }
+
+    .pd-v-1 {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    .pd-v-2 {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .pd-v-3 {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    #signImg {
+        float: right;
+        clear: both;
+    }
+}

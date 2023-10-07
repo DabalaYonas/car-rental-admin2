@@ -51,26 +51,7 @@ function SideBar(props) {
         setSidebarState(false);
     }
 
-    function init() {
-        function d(params) {
-            
-        }
-        var submenus = document.getElementsByClassName("submenu");
-        for(let submenu of submenus) {
-            submenu.addEventListener("click", (e)=>{
-
-                for(let submenu of submenus) {
-                    submenu.classList.remove("submenu-active");
-                    console.log(submenu);
-                }
-                submenu.classList.add("submenu-active");
-                // console.log(e.target);
-            });
-        }
-    }
-
     useEffect(()=>{
-        // init();
         var links = document.getElementsByClassName("sidebar-link");
         for(let link of links) {
             if (link.pathname === loction.pathname) {
@@ -88,6 +69,14 @@ function SideBar(props) {
 
     function handlerDropdown(e) {
         // unselectAllMenus();
+        
+        var submenus = document.getElementsByClassName("submenus");
+        for(let submenu of submenus) {
+            if (submenu.style.display === "block") {
+                submenu.parentElement.children[0].children[0].children[2].classList.toggle("rotate");
+            }
+            submenu.style.display = "none";
+        }
 
         var link;
         if (e.target.parentElement.classList.contains("menu")) {
@@ -155,7 +144,7 @@ function SideBar(props) {
                     </li>
                     <li>
                         <div className="menu" onClick={handlerDropdown}>
-                            <Link className="menu-link sidebar-link" to="/vehicles">
+                            <Link className="menu-link sidebar-link" to="/cars">
                                 <i className="bi bi-car-front-fill"></i>
                                 <span className="sidebar-body-title">Vehicle</span>
                                 <i className="bi bi-chevron-right sidebar_dropdown_icon"></i>
@@ -163,8 +152,8 @@ function SideBar(props) {
                         </div>
                         <ul className="submenus">
                             <li>
-                                <Link to="/vehicles" className="submenu sidebar-link">Vehicle List</Link>
-                                <Link to="/add-vehicle" className="submenu sidebar-link">Vehicle Add</Link>
+                                <Link to="/cars" className="submenu sidebar-link">Vehicle List</Link>
+                                <Link to="/add-car" className="submenu sidebar-link">Vehicle Add</Link>
                             </li>
                         </ul>
                     </li>
@@ -208,6 +197,20 @@ function SideBar(props) {
                         </ul>
                     </li>
                     <li><Link className="menu-link sidebar-link" to="/payment"><i className="bi bi-cash-stack"></i><span className="sidebar-body-title">Payment List</span></Link></li>
+                    
+                    <li>
+                        <div className="menu" onClick={handlerDropdown}>
+                            <Link className="menu-link sidebar-link" to="/agreement">
+                                <i className="bi bi-calendar-check-fill"></i>
+                                <span className="sidebar-body-title">Agreement</span>
+                                <i className="bi bi-chevron-right sidebar_dropdown_icon"></i>
+                            </Link>
+                        </div>
+                        <ul className="submenus">
+                            <li><Link to="/agreement" className="submenu sidebar-link">Agreements</Link></li>
+                            <li><Link to="/add-agreement" className="submenu sidebar-link">Agreement Add</Link></li>
+                        </ul>
+                    </li>
                     <li><Link className="menu-link sidebar-link" to="/setting"><i className="bi bi-gear-fill"></i><span className="sidebar-body-title">Setting</span></Link></li>
                     <li className="menu-title">Report</li>
                     <li><Link className="menu-link sidebar-link" to="/reports"><i className="bi bi-receipt-cutoff"></i><span className="sidebar-body-title">Report</span></Link></li>

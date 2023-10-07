@@ -21,12 +21,8 @@ function PaymentList() {
             if(mounted) {
                 setPaymentList(data);
                 data.forEach(e => {
-                    var bookedCarName;
-                    getBooks().then(r1 => {    
-                        bookedCarName = r1.filter(car => car.id == e.booking)[0].name;
-                        setListItems(prev => ([...prev, [e.id, e.amount + " ETB", e.method, e.tnx_id, e.status]]));
-                        setBadge(4);
-                    });
+                    setListItems(prev => ([...prev, [e.id, e.amount + " ETB", e.method, e.tnx_id, e.status]]));
+                    setBadge(4);
                 });
             }
         });
@@ -78,7 +74,8 @@ function PaymentList() {
         </Tabs>
         <div className="myCard">
             <h3 className="pd-v-2 pd-h-1">Payment List</h3>
-            <ListView listHeader={listHeader} listItems={listItems} handleClick={handleClick} badge={badge}></ListView>
+            <ListView listHeader={listHeader} listItems={listItems} data={paymentList} url={"payment"} handleClick={handleClick} badge={badge}
+            isPaidAction="ture" notAdd={true}></ListView>
         </div>
     </div>
 }

@@ -39,9 +39,9 @@ body {
 }
 
 .sidenav .closebtn i {
-font-size: 38px;
-color: #232323;
-font-weight: 600;
+    font-size: 38px;
+    color: #232323;
+    font-weight: 600;
 }
 
 .sidebar-body .menu-title {
@@ -58,7 +58,7 @@ font-weight: 600;
     padding: 12px 8px 12px 0px;
     text-decoration: none;
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 400;
     color: #6f6f6f;
     text-align: start;
     transition: 0.3s ease-in;
@@ -115,9 +115,9 @@ font-weight: 600;
 }
 
 .sidebar-body i {
-font-size: 22px;
-font-weight: bold;
-margin-right: 14px;
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 14px;
 }
 
 .sidebar-body .sidebar_dropdown_icon {
@@ -132,10 +132,11 @@ margin-right: 14px;
 }
 
 #main {
-transition: margin-left .5s;
-padding: 20px;
-background: #f7f7f7;
-margin-left: 250px;
+    transition: margin-left .5s;
+    padding: 20px;
+    background: #f7f7f7;
+    margin-left: 250px;
+    overflow: auto;
 }
 
 @media screen and (max-height: 450px) {

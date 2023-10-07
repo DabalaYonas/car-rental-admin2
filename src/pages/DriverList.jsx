@@ -8,7 +8,7 @@ function DriversList() {
     const navigate = useNavigate();
     var [driversList, setDriversList] = useState([]);
     
-    const listHeader = ["ID", "Name", "Email", "Phone number", "Age", "Is Customer"];
+    const listHeader = ["ID", "Name", "Email", "Phone number", "Age", "Gender"];
     const [listItems, setListItems] = useState([]);
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function DriversList() {
             if(mounted) {
                 setDriversList(data);
                 data.forEach(e => {
-                    setListItems(prev => ([...prev, [e.id, e.first_name + " " + e.last_name, e.email, e.phone_number, e.age, e.is_customer]]));
+                    setListItems(prev => ([...prev, [e.id, e.first_name + " " + e.last_name, e.email, e.phone_number, e.age, e.gender]]));
                 });
             }
         });
@@ -36,7 +36,7 @@ function DriversList() {
         <h2 className="pd-v-2 pd-h-1">Drivers</h2>
             <div className="myCard">
                 <h3 className="pd-v-2 pd-h-1">Drivers List</h3>
-                <ListView listHeader={listHeader} listItems={listItems} handleClick={handleClick}></ListView>
+                <ListView listHeader={listHeader} listItems={listItems} data={driversList} url={"driver"} handleClick={handleClick}></ListView>
             </div>
         </div>
 }

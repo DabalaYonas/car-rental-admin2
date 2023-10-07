@@ -26,14 +26,14 @@ function VehiclesList() {
 
     function handleClick(id) {
         const selectedCar = carList.filter(car => car.id == id);
-        navigate("/edit-vehicle", {state: {"selectedCar": selectedCar}});
+        navigate("/edit-car", {state: {"selectedCar": selectedCar}});
     }
 
     return <div>
         <h2 className="pd-v-2 pd-h-1">Cars</h2>
             <div className="myCard">
                 <h3 className="pd-v-2 pd-h-1">Car List</h3>
-                <ListView listHeader={listHeader} listItems={listItems} handleClick={handleClick}></ListView>
+                <ListView listHeader={listHeader} listItems={listItems} data={carList} url={"car"} handleClick={handleClick} isAvailableAction="true"></ListView>
             </div>
         </div>
 }

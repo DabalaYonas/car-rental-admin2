@@ -21,6 +21,10 @@ import EditCustomer from './pages/EditCustomer';
 import AddBooking from './pages/AddBooking';
 import EditPayment from './pages/EditPayment';
 import SettingPage from './pages/Setting';
+import EditBooking from './pages/EditBooking';
+import Agreements from './pages/AgreementsList';
+import AddAgreement from './pages/AddAgreement';
+import AgreementDetail from './pages/AgreementDetail';
 
 
 function App() {
@@ -29,14 +33,15 @@ function App() {
             <SideBar>
                 <Routes>
                   <Route path="/" Component={Dashboard} />
-                  <Route path="/vehicles" Component={VehiclesList} />
-                  <Route path="/add-vehicle" Component={AddVehicle} />
-                  <Route path="/edit-vehicle" Component={EditVehicle} />
+                  <Route path="/cars" Component={VehiclesList} />
+                  <Route path="/add-car" Component={AddVehicle} />
+                  <Route path="/edit-car" Component={EditVehicle} />
                   <Route path="/drivers" Component={DriversList} />
                   <Route path="/add-driver" Component={AddDriver} />
                   <Route path="/edit-driver" Component={EditDriver} />
                   <Route path="/booking" Component={BookingList} />
                   <Route path="/add-booking" Component={AddBooking} />
+                  <Route path="/edit-booking" Component={EditBooking} />
                   <Route path="/customers" Component={CustomerList} />
                   <Route path="/add-customer" Component={AddCustomer} />
                   <Route path="/edit-customer" Component={EditCustomer} />
@@ -44,7 +49,9 @@ function App() {
                   <Route path="/edit-payment" Component={EditPayment} />
                   <Route path="/setting" Component={SettingPage} />
                   <Route path="/reports" Component={ReportList} />
-                  <Route path="/invoice" Component={InvoiceDetail} />
+                  <Route path="/agreement" Component={Agreements} />
+                  <Route path="/agreement-details" Component={AgreementDetail} />
+                  <Route path="/add-agreement" Component={AddAgreement} />
                 </Routes>
             </SideBar>
         </BrowserRouter>

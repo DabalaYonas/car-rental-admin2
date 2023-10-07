@@ -3,7 +3,7 @@ import Button from "./component/Button";
 import UploadView from "./component/UploadView/UploadView";
 import { useState } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 async function addDriver(driverInfo) {
     return axios.post("http://127.0.0.1:8000/booking/driver/api/", driverInfo, {headers: {'content-type': 'multipart/form-data'}}).then(response=>response.data);
@@ -19,6 +19,7 @@ function AddDriver() {
         var value = e.target.value;
         if(name === "image") {
             setImageInput(e.target.files[0]);
+            console.log("license image is found");
         } else {
             setInputs(values => ({...values, [name]: value}));
         }
@@ -128,7 +129,7 @@ function AddDriver() {
                             <div className="form-group" >
                                 <label className="form-control-label" htmlFor="input-driving-license">Driving License</label>
                                 
-                                <UploadView setImageInput={setImageInput}></UploadView>
+                                <UploadView setImageInput={setImageInput}>Select a driving license image</UploadView>
                             </div>
                         </div>
                     </div> 

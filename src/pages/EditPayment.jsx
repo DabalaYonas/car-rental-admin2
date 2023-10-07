@@ -3,7 +3,7 @@ import Button from "./component/Button";
 import UploadView from "./component/UploadView/UploadView";
 import { useState } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 async function updatePyament(id, paymentForm) {
     return axios.put("http://127.0.0.1:8000/booking/payment/api/" + id + "/", paymentForm).then(response=>response.data);
@@ -12,10 +12,14 @@ async function updatePyament(id, paymentForm) {
 function EditPayment() {
     const navigate = useNavigate();
     const state = useLocation().state;
-    let { selectedPayment } = state ? state : {};
+    const { selectedData } = state ? state : {};
+    var selectedPayment = selectedData;
     selectedPayment = selectedPayment && selectedPayment[0];
     const [inputs, setInputs] = useState((selectedPayment ? selectedPayment : {}));
   
+    if (state === null) {
+      return <Navigate replace to="/payments" />
+    }
     function handleChange(e) {
         var name = e.target.name;
         var value = e.target.value;

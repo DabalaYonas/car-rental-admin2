@@ -3,7 +3,7 @@ import Button from "./component/Button";
 import UploadView from "./component/UploadView/UploadView";
 import { useState } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 async function updateCustomer(id, customerForm) {
     return axios.put("http://127.0.0.1:8000/booking/customer/api/" + id + "/", customerForm).then(response=>response.data);
@@ -12,9 +12,14 @@ async function updateCustomer(id, customerForm) {
 function EditCustomer() {
     const navigate = useNavigate();
     const state = useLocation().state;
-    let { selectedCustomer } = state ? state : {};
+    const { selectedData } = state ? state : {};
+    let selectedCustomer = selectedData;
     selectedCustomer = selectedCustomer && selectedCustomer[0];
     const [inputs, setInputs] = useState((selectedCustomer ? selectedCustomer : {}));
+    
+    if (state === null) {
+      return <Navigate replace to="/customers" />
+    }
   
     function handleChange(e) {
         var name = e.target.name;
@@ -31,9 +36,10 @@ function EditCustomer() {
         formData.append("email", inputs.email);
         formData.append("phone_number", inputs.phone_number);
         formData.append("age", inputs.age);
+        formData.append("gender", inputs.gender);
 
         updateCustomer(selectedCustomer.id, formData).then(response => {
-            navigate("/customer");
+            navigate("/customers");
         });
     }
     return <div>
@@ -148,7 +154,17 @@ function EditCustomer() {
                         </div>
                     </div>
                     
-                    <div className="row">
+                    <div className="row"><div className="col-lg-6">
+                        <div className="form-group focused">
+                          <label className="form-control-label" htmlFor="input-gender">Gender</label>
+                          <select className="form-control form-control-alternative" id="input-gender" name="gender" onChange={handleChange} value={inputs.gender} required>
+                            <option value="">Select a gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
+                            </div>
+                        </div>
+
                         <div className="col-lg-6">
                             <div className="form-group">
                             <label className="form-control-label" htmlFor="input-age">Age</label>

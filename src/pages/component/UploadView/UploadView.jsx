@@ -61,7 +61,7 @@ function UploadView(props) {
           // console.log(fileType);
           var imageName = file.name;
       
-          var isGood = (/\.(?=gif|jpg|png|jpeg)/gi).test(imageName);
+          var isGood = (/\.(?=gif|jpg|png|jpeg|webp)/gi).test(imageName);
           if (isGood) {
             document.getElementById('start').classList.add("hidden");
             document.getElementById('response').classList.remove("hidden");
@@ -150,7 +150,7 @@ function UploadView(props) {
           <img class="hidden"  id="file-image" src="#" alt="Preview" />
           <div className="div" id="start">
               <i class="bi bi-upload"></i>
-              <div className="div">Select a driving license image</div>
+              <div className="div">{props.children}</div>
                   <div id="notimage" class="hidden">Please select an image</div>
                   <span id="file-upload-btn" class="btn btn-primary">Select an image</span>
           </div>

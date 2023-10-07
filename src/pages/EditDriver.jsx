@@ -3,7 +3,7 @@ import Button from "./component/Button";
 import UploadView from "./component/UploadView/UploadView";
 import { useState } from "react";
 import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
 async function updateDriver(id, driverInfo) {
     return axios.put("http://127.0.0.1:8000/booking/driver/api/" + id + "/", driverInfo, {headers: {'content-type': 'multipart/form-data'}}).then(response=>response.data);
@@ -12,13 +12,18 @@ async function updateDriver(id, driverInfo) {
 function EditDriver() {
     const navigate = useNavigate();
     const state = useLocation().state;
-    let { selectedDriver } = state ? state : {};
+    const { selectedData } = state ? state : {};
+    var selectedDriver = selectedData;
     selectedDriver = selectedDriver && selectedDriver[0];
     const driverLicense = selectedDriver ? selectedDriver.driver_license : {
         
     };
     const [inputs, setInputs] = useState((selectedDriver ? selectedDriver : {}));
     const [imageInput, setImageInput] = useState(driverLicense);
+  
+    if (state === null) {
+      return <Navigate replace to="/drivers" />
+    }
   
     function handleChange(e) {
         var name = e.target.name;
@@ -30,7 +35,7 @@ function EditDriver() {
         }
         console.log(selectedDriver);
     }
-  
+    
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -44,6 +49,8 @@ function EditDriver() {
         if(typeof(imageInput) !== "string") {
             formData.append("driver_license", imageInput, imageInput.name);
         }
+        console.log(imageInput);
+        console.log(imageInput.name);
         formData.forEach(item => {
         console.log(item);
 
@@ -60,7 +67,7 @@ function EditDriver() {
         </div>
       </nav>
       
-      <div className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style={{minHeight: "200px", backgroundImage: "url(https://raw.githubusercontent.com/creativetimofficial/argon-dashboard/gh-pages/assets-old/img/theme/profile-cover.jpg)", backgroundSize: "cover", backgroundPosition: "center top"}}>
+      <div className="header pb-8 pt-5 pt-lg-8 d-flex align-items-center" style={{minHeight: "200px", backgroundImage: "url(https://www.starkwoodchiropractic.com/wp-content/uploads/2017/05/Pain-Relieving-Stretches-for-Professional-Drivers-1.jpg)", backgroundSize: "cover", backgroundPosition: "center top"}}>
         <span className="mask bg-gradient-default opacity-8"></span>
       </div>
       
@@ -96,7 +103,7 @@ function EditDriver() {
                             <i className="bi bi-envelope mr-2"></i>
                         </div>
                         <div className="personal-views">
-                            <h3>Email: <h4 className="text-muted">{selectedDriver.email}</h4></h3>
+                            <h3>Email <h4 className="text-muted">{selectedDriver.email}</h4></h3>
                         </div>
                     </div>
                     <div className="personal-info input-group-prepend">
@@ -104,7 +111,7 @@ function EditDriver() {
                             <i className="bi bi-phone mr-2"></i>
                         </div>
                         <div className="personal-views">
-                            <h3>Mobile: <h4 className="text-muted">{selectedDriver.phone_number}</h4></h3>
+                            <h3>Mobile <h4 className="text-muted">{selectedDriver.phone_number}</h4></h3>
                         </div>
                     </div>
                     <div className="personal-info input-group-prepend">
@@ -112,7 +119,7 @@ function EditDriver() {
                             <i className="bi bi-calendar2-event mr-2"></i>
                         </div>
                         <div className="personal-views">
-                            <h3>Age: <h4 className="text-muted">{selectedDriver.age}</h4></h3>
+                            <h3>Age <h4 className="text-muted">{selectedDriver.age}</h4></h3>
                         </div>
                     </div>
                     <div className="personal-info input-group-prepend">
@@ -120,7 +127,7 @@ function EditDriver() {
                             <i className="bi bi-person mr-2 mr-2"></i>
                         </div>
                         <div className="personal-views">
-                            <h3>Gender: <h4 className="text-muted">{selectedDriver.gender}</h4></h3>
+                            <h3>Gender <h4 className="text-muted">{selectedDriver.gender}</h4></h3>
                         </div>
                     </div>
                         
@@ -194,6 +201,13 @@ function EditDriver() {
                     </div>
 
                     <div className="row">
+                      {driverLicense != null &&<div className="col-lg-6">
+                            <div className="form-group" >
+                                <label className="form-control-label" htmlFor="input-driving-license">Old Driver License Image</label>
+                                <img width="100%" alt="Old driver license image" src={driverLicense} />
+                              
+                            </div>
+                        </div>}
                         <div className="col-lg-6">
                             <div className="form-group" >
                                 <label className="form-control-label" htmlFor="input-driving-license">Driving License</label>

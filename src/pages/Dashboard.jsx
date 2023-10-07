@@ -9,7 +9,8 @@ import { getPayments } from "./datas/payments";
 
 function Dashboard() {
     var [carSeries, setCarSeries] = useState([0, 0, 0, 0]);
-    var [seriesPayment, setSeriesPayment] = useState([{data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}]);
+    var [seriesPayment, setSeriesPayment] = useState([{data: [0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0]}]);
+    var [seriesBooking, setSeriesBooking] = useState([{data: [0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0]}]);
     var [carOptions, setCarOptions] = useState({"series": carSeries, "labels": ['On Rented', 'Avaliable', 'Reserve', 'Accident']});
 
     var [bookList, setBookList] = useState([]);
@@ -50,6 +51,7 @@ function Dashboard() {
 
     useEffect(() => {
         let mounted = true;
+        const currentDate = new Date();
 
         getCars().then(data => {
         if(mounted) {
@@ -62,9 +64,17 @@ function Dashboard() {
 
         getBooks().then(data => {
         if(mounted) {
+            var newData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             setBookList(data);
             setPendingBooking(data.filter(item => item.status == "PENDING").length);
             setOnRentCar(data.filter(item => item.status == "ACCEPTED").length);
+            data.filter(item => item.status == "ACCEPTED").forEach(element => {
+                var date = new Date(element.pick_up_date);
+                if (currentDate.getFullYear() === date.getFullYear()) {
+                    newData[date.getMonth()-1] = newData[date.getMonth()-1] + 1;
+                }
+            });
+            setSeriesBooking([{data: newData}]);
         }
         });
 
@@ -79,15 +89,21 @@ function Dashboard() {
             setPaymentList(data);
             setPendingPayment(data.filter(item => item.status == "PENDING").length);
             var t = 0;
+            var newData = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
             data.filter(item => item.status == "PAID").forEach(element => {
                 t += element.amount;
+                var date = new Date(element.paid_date);
+                if (currentDate.getFullYear() === date.getFullYear()) {
+                    newData[date.getMonth()-1] = newData[date.getMonth()-1] + element.amount;
+                }
             });
+
             setRevenue(t);
+            setSeriesPayment([{data: newData}]);
         }
         });
 
         setCarSeries([onRentCar, availableCar, reserveCar, 0]);
-        setSeriesPayment([{data: paidPayments}]);
         return () => mounted = false;
     }, [availableCar]);
 
@@ -108,24 +124,34 @@ function Dashboard() {
                 <Card title="Pending Payment" text={pendingPayment} iconClass="bi bi-currency-exchange" cardBg="4"/>
             </div>
             <div className="col-3 pd-h-1 pd-v-1">
-                <Card title="Revenue" text={revenue + " ETB"} iconClass="bi bi-currency-exchange" cardBg="5"/>
+                <Card title="Total Revenue" text={revenue + " ETB"} iconClass="bi bi-currency-exchange" cardBg="5"/>
             </div>
         </div>
+
         <div className="row">
-            <div className="col-4 pd-h-1 pd-v-1">
+            <div className="col-n-w pd-h-1 pd-v-1">
                 <div className="myCard">
                     <div className="myCard-header">
-                        <h3>Car static</h3>
+                        <h3>This Year Incomes</h3>
                     </div>
-                    <Chart options={carOptions} series={carSeries} width="400" type="donut" />
+                    <Chart options={optionPayment} series={seriesPayment} width="500" type="area" />
                 </div>
             </div>
             <div className="col-n-w pd-h-1 pd-v-1">
                 <div className="myCard">
                     <div className="myCard-header">
-                        <h3>This year incomes</h3>
+                        <h3>This Year Booking</h3>
                     </div>
-                    <Chart options={optionPayment} series={seriesPayment} width="500" type="line" />
+                    <Chart options={optionPayment} series={seriesBooking} width="500" type="area" />
+                </div>
+            </div>
+            
+            <div className="col-4 pd-h-1 pd-v-1">
+                <div className="myCard">
+                    <div className="myCard-header">
+                        <h3>Car Statuses</h3>
+                    </div>
+                    <Chart options={carOptions} series={carSeries} width="400" type="donut" />
                 </div>
             </div>
         </div>

@@ -4,36 +4,40 @@ import axios from "axios";
 import { getDrivers } from "./datas/drivers";
 import { getCars } from "./datas/cars";
 import { getCustomers } from "./datas/customer";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 
-async function addBooking(bookingForm) {
-    return axios.post("http://127.0.0.1:8000/booking/api/", bookingForm).then(response=>response.data);
+async function updateBooking(id, bookingForm) {
+    return axios.put("http://127.0.0.1:8000/booking/api/" + id + "/", bookingForm).then(response=>response.data);
 }
 
-function AddBooking() {
+function EditBooking() {
     const navigate = useNavigate();
-    const [inputs, setInputs] = useState({});
-    const [carList, setCarList] = useState([]);
-    const [driverList, setDriverList] = useState([]);
-    const [customerList, setCustomerList] = useState([]);
+    const state = useLocation().state;
+    const { selectedData } = state ? state : {};
+    console.log(selectedData);
+    var selectedBooking = selectedData && selectedData[0];
+    const [inputs, setInputs] = useState((selectedBooking ? selectedBooking : {}));
 
+    const [carList, setCarList] = useState([]);
+    const [customerList, setCustomerList] = useState([]);
+    
     useEffect(() => {
-        let mounted = true;
-        setCarList([]);
-        setDriverList([]);
-            if(mounted) {
-                getCars().then(data => {
-                    setCarList(data);
-                 });
-                getDrivers().then(data => {
-                    setDriverList(data);
-                });
-                getCustomers().then(data => {
-                    setCustomerList(data);
-                });
-            }
-        return () => mounted = false;
-    }, []);
+      let mounted = true;
+      setCarList([]);
+          if(mounted) {
+              getCars().then(data => {
+                  setCarList(data);
+               });
+              getCustomers().then(data => {
+                  setCustomerList(data);
+              });
+          }
+      return () => mounted = false;
+  }, []);
+  
+    if (state === null) {
+      return <Navigate replace to="/booking" />
+    }
 
     function handleChange(e) {
         var name = e.target.name;
@@ -45,12 +49,12 @@ function AddBooking() {
         e.preventDefault();
 
         let formData = new FormData();
-        formData.append("pick_up_date", inputs.pickupdate);
+        formData.append("pick_up_date", inputs.pick_up_date);
         formData.append("return_date", inputs.return_date);
-        formData.append("booked_car", inputs.car);
+        formData.append("booked_car", inputs.booked_car);
         formData.append("customer", inputs.customer);
-        formData.append("status", "PENDING");
-        addBooking(formData).then(response => {
+        formData.append("status", inputs.status);
+        updateBooking(selectedBooking.id, formData).then(response => {
             navigate("/booking");
         });
     }
@@ -58,7 +62,7 @@ function AddBooking() {
     <div className="main-content">
       <nav className="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
         <div className="container-fluid">
-          <h1 className="mb-0">Add Booking</h1>
+          <h1 className="mb-0">Edit Booking</h1>
         </div>
       </nav>
       
@@ -85,13 +89,13 @@ function AddBooking() {
                       <div className="col-lg-6">
                         <div className="form-group focused">
                           <label className="form-control-label" htmlFor="input-pickup-date">Pickup date</label>
-                          <input type="date" id="input-pickup-date" className="form-control form-control-alternative" name="pickupdate" onChange={handleChange} value={inputs.pickupdate} min={new Date().toLocaleDateString('fr-ca')} required/>
+                          <input type="date" id="input-pickup-date" className="form-control form-control-alternative" name="pickupdate" onChange={handleChange} value={inputs.pick_up_date} required/>
                         </div>
                       </div>
                       <div className="col-lg-6">
                         <div className="form-group focused">
                           <label className="form-control-label" htmlFor="input-return-date">Return date</label>
-                          <input type="date" id="input-return-date" className="form-control form-control-alternative" name="return_date" onChange={handleChange} value={inputs.return_date} min={inputs.pickupdate == null ?  (new Date().toLocaleDateString('fr-ca')) : inputs.pickupdate } required/>
+                          <input type="date" id="input-return-date" className="form-control form-control-alternative" name="return_date" onChange={handleChange} value={inputs.return_date} required/>
                         </div>
                       </div>
                     </div>
@@ -100,9 +104,9 @@ function AddBooking() {
                         <div className="col-lg-6">
                             <div className="form-group focused">
                                 <label className="form-control-label" htmlFor="input-car">Car</label>
-                                <select className="form-control form-control-alternative" id="input-car" name="car" onChange={handleChange} value={inputs.car} required>
+                                <select className="form-control form-control-alternative" id="input-car" name="booked_car" onChange={handleChange} value={inputs.booked_car} required>
                                     <option value="">Select a car</option>
-                                    {carList.filter(item => item.is_available).map((e, i) => (<option key={i} value={e.id}>{e.name}</option>))}
+                                    {carList.map((e, i) => (<option key={i} value={e.id}>{e.name}</option>))}
                                 </select>
                             </div>
                         </div>
@@ -113,6 +117,21 @@ function AddBooking() {
                                 <select className="form-control form-control-alternative" id="input-customer" name="customer" onChange={handleChange} value={inputs.customer} required>
                                     <option value="">Select a customer</option>
                                     {customerList.map((e, i) => (<option key={i} value={e.id}>{e.first_name + " " + e.last_name}</option>))}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="row">
+                         <div className="col-lg-6">
+                            <div className="form-group focused">
+                                <label className="form-control-label" htmlFor="input-status">Status</label>
+                                <select className="form-control form-control-alternative" id="input-status" name="status" onChange={handleChange} value={inputs.status} required>
+                                    <option value="">Select a status</option>
+                                    <option value="PENDING">Pending</option>
+                                    <option value="CANCELLED">Cancelled</option>
+                                    <option value="ACCEPTED">Accepted</option>
+                                    <option value="RETURNED">Completed</option>    
                                 </select>
                             </div>
                         </div>
@@ -139,4 +158,4 @@ function AddBooking() {
   </div>
 }
 
-export default AddBooking;
+export default EditBooking;

@@ -27,6 +27,7 @@ function AddCustomer() {
         formData.append("email", inputs.email);
         formData.append("phone_number", inputs.phone_number);
         formData.append("age", inputs.age);
+        formData.append("gender", inputs.gender);
         addCustomer(formData).then(response => {
             navigate("/customers");
         });
@@ -94,6 +95,17 @@ function AddCustomer() {
                             <div className="form-group">
                             <label className="form-control-label" htmlFor="input-age">Age</label>
                             <input type="number" id="input-age" className="form-control form-control-alternative" placeholder="Age" name="age" onChange={handleChange} value={inputs.age} required/>
+                            </div>
+                        </div>
+                        
+                      <div className="col-lg-6">
+                        <div className="form-group focused">
+                          <label className="form-control-label" htmlFor="input-gender">Gender</label>
+                          <select className="form-control form-control-alternative" id="input-gender" name="gender" onChange={handleChange} value={inputs.gender} required>
+                            <option value="">Select a gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                          </select>
                             </div>
                         </div>
                     </div>

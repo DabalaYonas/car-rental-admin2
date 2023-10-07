@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCustomer } from "./datas/customer";
+import { getCustomers } from "./datas/customer";
 import ListView from "./component/ListView";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ function CustomerList() {
         let mounted = true;
         setListItems([]);
         setCustomerList([]);
-        getCustomer().then(data => {
+        getCustomers().then(data => {
             if(mounted) {
                 setCustomerList(data);
                 data.forEach(e => {
@@ -36,7 +36,7 @@ function CustomerList() {
         <h2 className="pd-v-2 pd-h-1">Customer</h2>
             <div className="myCard">
                 <h3 className="pd-v-2 pd-h-1">Customer List</h3>
-                <ListView listHeader={listHeader} listItems={listItems} handleClick={handleClick}></ListView>
+                <ListView listHeader={listHeader} listItems={listItems} handleClick={handleClick} data={customerList} url={"customer"} ></ListView>
             </div>
         </div>
 }
