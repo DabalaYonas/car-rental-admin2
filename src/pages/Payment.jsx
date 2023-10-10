@@ -31,7 +31,7 @@ function PaymentList() {
 
     function handleClick(id) {
         const selectedPayment = paymentList.filter(payment => payment.id === id);
-        navigate("/edit-payment", {state: {"selectedPayment": selectedPayment}});
+        // navigate("/edit-payment", {state: {"selectedPayment": selectedPayment}});
     }
 
     function handleTabClick(n) {

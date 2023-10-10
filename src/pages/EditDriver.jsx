@@ -13,8 +13,7 @@ function EditDriver() {
     const navigate = useNavigate();
     const state = useLocation().state;
     const { selectedData } = state ? state : {};
-    var selectedDriver = selectedData;
-    selectedDriver = selectedDriver && selectedDriver[0];
+    var selectedDriver = selectedData && selectedData[0];
     const driverLicense = selectedDriver ? selectedDriver.driver_license : {
         
     };

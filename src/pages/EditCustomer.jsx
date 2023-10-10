@@ -13,8 +13,7 @@ function EditCustomer() {
     const navigate = useNavigate();
     const state = useLocation().state;
     const { selectedData } = state ? state : {};
-    let selectedCustomer = selectedData;
-    selectedCustomer = selectedCustomer && selectedCustomer[0];
+    var selectedCustomer = selectedData && selectedData[0];
     const [inputs, setInputs] = useState((selectedCustomer ? selectedCustomer : {}));
     
     if (state === null) {

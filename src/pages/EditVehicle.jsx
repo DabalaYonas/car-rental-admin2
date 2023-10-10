@@ -14,8 +14,7 @@ function EditVehicle() {
     const navigate = useNavigate();
     const state = useLocation().state;
     const { selectedData } = state ? state : {};
-    var selectedCar = selectedData;
-    selectedCar = selectedCar[0];
+    var selectedCar = selectedData[0];
     const currentImage = selectedCar.images;
     const [inputs, setInputs] = useState(selectedCar);
     const [imageInput, setImageInput] = useState(selectedCar.images);

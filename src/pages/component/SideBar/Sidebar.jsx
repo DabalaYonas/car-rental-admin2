@@ -201,7 +201,7 @@ function SideBar(props) {
                     <li>
                         <div className="menu" onClick={handlerDropdown}>
                             <Link className="menu-link sidebar-link" to="/agreement">
-                                <i className="bi bi-calendar-check-fill"></i>
+                                <i className="bi bi-pen-fill"></i>
                                 <span className="sidebar-body-title">Agreement</span>
                                 <i className="bi bi-chevron-right sidebar_dropdown_icon"></i>
                             </Link>

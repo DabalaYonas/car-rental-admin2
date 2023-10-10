@@ -113,6 +113,10 @@ h3 {
     margin-top: 5px;
 }
 
+.mg-t-1 {
+  margin-top: 10px;
+}
+
 .mg-t-2 {
     margin-top: 20px;
 }
@@ -123,6 +127,10 @@ h3 {
 
 .mg-b-3 {
   margin-bottom: 30px;
+}
+
+.me-1 {
+  margin-right: 0.25!important;
 }
 
 .pd-v-1 {
@@ -180,7 +188,7 @@ table {
     background-color: #ffffff;
     max-width: 100%;
     min-width: 280px;
-    overflow: auto;
+    /* overflow: auto; */
   }
   
   .myCard-header {
@@ -550,4 +558,209 @@ table {
   touch-action: none;
   display: block;
   background-color: #fff;
+}
+
+.app-listing {
+  padding: 0;
+  margin: 0 -15px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.app-listing li {
+  width: 20%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.multipleSelection {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.selectBox {
+  position: relative;
+  background: #fff;
+  width: 100%;
+  padding: 13px 10px;
+  font-weight: 400;
+  background: #FFFFFF;
+  border: 1px solid #F7F8F9;
+  border-radius: 7px;
+  display: flex;
+  display: -ms-flexbox;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.selectBox .bi {
+  font-weight: 900;
+}
+
+.selectBox p .select-icon {
+  color: #3d5ee1;
+  width: 20px;
+  height: 20px;
+}
+
+#checkBox {
+  display: none;
+  position: absolute;
+  width: 320px;
+  left: 0;
+  z-index: 1;
+  margin-top: 10px;
+  padding: 20px;
+  background: #FFFFFF;
+  border: 1px solid #F2ECFF;
+  box-shadow: 0px 4px 44px rgba(231, 234, 252, 0.75);
+  border-radius: 6px;
+}
+
+#checkBox::before {
+  border: 7px solid #F2ECFF;
+  border-color: transparent transparent #ffffff #ffffff;
+  box-shadow: -2px 2px 2px -1px rgb(0 0 0 / 10%);
+  content: "";
+  left: 30px;
+  position: absolute;
+  top: 0;
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+  -webkit-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+
+.checkbox-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #3d5ee1;
+  margin-bottom: 14px;
+}
+
+.form-control {
+  padding-left: 14px;
+  border: 1px solid rgba(231, 234, 252, 0.75);
+  border-radius: 6px;
+}
+
+#checkBox .form-custom {
+  margin-bottom: 14px;
+}
+
+.form-custom {
+  position: relative;
+}
+
+.selectBox-cont {
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 5px;
+  overflow: auto;
+}
+
+.custom_check {
+  color: #1B2559;
+  display: inline-block;
+  position: relative;
+  font-size: 14px;
+  margin-bottom: 15px;
+  padding-left: 30px;
+  cursor: pointer;
+  font-weight: 400;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.custom_check input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.custom_check .checkmark::after {
+  content: "\F272";
+  font-family: "bootstrap-icons";
+  font-weight: 900;
+  position: absolute;
+  left: 3px;
+  top: 2px;
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.custom_check input:checked ~ .checkmark {
+  background-color: #3d5ee1;
+  border-color: #3d5ee1;
+}
+
+.custom_check .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 19px;
+  width: 21px;
+  border: 1px solid #C4C4C4;
+  background-color: #fff;
+  border-radius: 6px;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.date-picker {
+  width: 50%;
+  float: left;
+  padding-right: 10px;
+}
+
+.outline-btn {
+  font-weight: 600;
+  color: #3d5ee1!important;
+  background: #FFFFFF!important;
+  border: 2px solid #3d5ee1!important;
+  border-radius: 8px;
+  width: 100%;
+  padding: 11px 0;
+}
+
+.btn .bi {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.w-100 {
+  width: 100%!important;
+}
+
+.visible {
+  display: block!important;
+  animation: fade-out 0.2s ease-in-out;
+}
+
+@keyframes fade-out {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@media (max-width: 1199.5px){
+  .app-listing {
+    display: inline-block;
+  }
+
+  .app-listing li {
+      width: 49%;
+      display: inline-block;
+  }
+  
+  .report-btn .outline-btn {
+      width: 200px;
+  }
 }

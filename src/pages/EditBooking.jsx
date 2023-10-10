@@ -15,7 +15,7 @@ function EditBooking() {
     const state = useLocation().state;
     const { selectedData } = state ? state : {};
     console.log(selectedData);
-    var selectedBooking = selectedData && selectedData[0];
+    var selectedBooking = selectedData;
     const [inputs, setInputs] = useState((selectedBooking ? selectedBooking : {}));
 
     const [carList, setCarList] = useState([]);

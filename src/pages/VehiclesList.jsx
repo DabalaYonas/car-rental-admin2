@@ -26,7 +26,8 @@ function VehiclesList() {
 
     function handleClick(id) {
         const selectedCar = carList.filter(car => car.id == id);
-        navigate("/edit-car", {state: {"selectedCar": selectedCar}});
+        console.log(selectedCar);
+        navigate("/edit-car", {state: {"selectedData": selectedCar}});
     }
 
     return <div>

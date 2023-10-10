@@ -51,7 +51,7 @@ function BookingList() {
     function handleClick(id) {
         const selectedBooking = bookingList.filter(item => item.booking.id === id);
         // console.log(selectedBooking[0].booking);
-        navigate("/edit-booking", {state: {"selectedBooking": selectedBooking[0].booking}});
+        navigate("/edit-booking", {state: {"selectedData": selectedBooking[0].booking}});
     }
 
     function handleTabClick(n) {

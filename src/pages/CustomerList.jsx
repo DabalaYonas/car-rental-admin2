@@ -29,7 +29,7 @@ function CustomerList() {
 
     function handleClick(id) {
         const selectedCustomer = customerList.filter(customer => customer.id == id);
-        navigate("/edit-customer", {state: {"selectedCustomer": selectedCustomer}});
+        navigate("/edit-customer", {state: {"selectedData": selectedCustomer}});
     }
 
     return <div>

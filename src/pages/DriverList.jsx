@@ -29,7 +29,7 @@ function DriversList() {
 
     function handleClick(id) {
         const selectedDriver = driversList.filter(driver => driver.id == id);
-        navigate("/edit-driver", {state: {"selectedDriver": selectedDriver}});
+        navigate("/edit-driver", {state: {"selectedData": selectedDriver}});
     }
 
     return <div>
